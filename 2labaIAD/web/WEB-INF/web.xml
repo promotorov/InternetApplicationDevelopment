@@ -3,4 +3,20 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    <servlet>
+        <servlet-name>servletExe</servlet-name>
+        <servlet-class>servletApp.WelcomeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>servletExe</servlet-name>
+        <url-pattern>/WelcomeApp</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>servletExe2</servlet-name>
+        <servlet-class>servletApp.AreaCheckServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>servletExe2</servlet-name>
+        <url-pattern>/WEB-INF/AreaCheckApp</url-pattern>
+    </servlet-mapping>
 </web-app>
