@@ -16,24 +16,25 @@ public class AreaCheckServlet extends HttpServlet {
             PrintWriter writer=resp.getWriter();
             int enterX=(int)req.getAttribute("enterX");
             double enterY=(double)req.getAttribute("enterY");
-            double r=(double)req.getAttribute("R");
+            double r=(double)req.getAttribute("enterR");
             boolean isInArea=checkArea(enterX, enterY, r);
             req.setAttribute("enterX", enterX);
             req.setAttribute("enterY", enterY);
-            req.setAttribute("R", r);
+            req.setAttribute("enterR", r);
             req.setAttribute("isInArea", isInArea);
             StudentsBean bean=new StudentsBean();
             bean.setEnterR(String.valueOf(r));
             bean.setEnterX(String.valueOf(enterX));
             bean.setEnterY(String.valueOf(enterY));
             bean.setResult(String.valueOf(isInArea));
-            resp.sendRedirect("http://localhost:8080/2labaIAD_war_exploded/answer.jsp");
+            //resp.sendRedirect("http://localhost:8080/2labaIAD_war_exploded/answer.jsp");
+            req.getRequestDispatcher("/answer.jsp").forward(req,resp);
         }
         catch (Exception e){
             e.printStackTrace();
         }
     }
-    private boolean checkArea(int x, double y, double r){
+    protected boolean checkArea(int x, double y, double r){
         if(x<=0 && y>=0 && Math.abs(x)<=Math.abs(r) && Math.abs(y)<=Math.abs(r)){
             return true;
         }

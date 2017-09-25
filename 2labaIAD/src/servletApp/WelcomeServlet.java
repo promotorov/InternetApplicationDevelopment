@@ -1,5 +1,7 @@
 package servletApp;
 
+import beans.StudentsBean;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,12 +32,13 @@ public class WelcomeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try
         {
+            System.out.println("does");
             PrintWriter writer=response.getWriter();
             request.getParameterValues("enterX");
             Map map=request.getParameterMap();
             String[] enterX=request.getParameterValues("enterX");
             String[] enterY=request.getParameterValues("enterY");
-            String[] R=request.getParameterValues("R");
+            String[] R=request.getParameterValues("enterR");
             int x=0;
             double y=0;
             double r=0;
@@ -57,7 +60,7 @@ public class WelcomeServlet extends HttpServlet {
                 //writer.println("True....");
                 request.setAttribute("enterX", x);
                 request.setAttribute("enterY", y);
-                request.setAttribute("R", r);
+                request.setAttribute("enterR", r);
                 request.getRequestDispatcher("/WEB-INF/AreaCheckApp").forward(request, response);
             }
         }

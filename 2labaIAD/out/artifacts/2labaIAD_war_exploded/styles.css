@@ -26,6 +26,7 @@ body{
 	text-align: center;
 	padding-top: 50px;
 	min-height: 500px;
+	overflow: hidden;
 }
 #description{
 	font: normal 500 12pt Arial;
@@ -74,6 +75,10 @@ body{
 	float: left;
 	width: 50%;
 	height: auto;
+	margin-bottom: 15px;
+}
+#refresh{
+	display: block;
 }
 .program img{
 	width: 100%;
@@ -82,7 +87,7 @@ body{
 #form-content{
 	margin: auto;
 }
-#chooseR h1{
+#chooseX h1{
 	margin: 0;
 	margin-bottom: 10px;
 	font-family: "Roboto", sans-serif;

@@ -16,6 +16,9 @@
   <script type="text/javascript" src="jquery.min.js"></script>
   <script type="text/javascript" src="jquery.validate.min.js"></script>
   <script type="text/javascript" src="validate.js"></script>
+  <script type="text/javascript" src="interactiveImage.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
 </head>
 <header>
   <div id="logo" >
@@ -34,39 +37,59 @@
   </div>
   <div class="program">
     <div id="dataimage">
-      <img src="images/image4.png">
+      <img id="graph" src="images/graph.jpg">
     </div>
     <div class="form">
       <form method="post" class="data-form" id="myForm">
-        <input type="text" id="enterX" placeholder="enterX"  name="enterX"/>
+        <input type="text" id="enterR" placeholder="enterR"  name="enterR"/>
         <br/>
         <input type="text" id="enterY" placeholder="enterY"  name="enterY"/>
-        <div id="chooseR">
-          <h1>Choose R:</h1>
-          <input type="checkbox" id="enterR1" name="R" value="1">
-          <label for="R1">1</label>
-          <input type="checkbox" id="enterR2" name="R" value="2">
-          <label for="R2">2</label>
-          <input type="checkbox" id="enterR3" name="R" value="3">
-          <label for="R3">3</label>
-          <input type="checkbox" id="enterR4" name="R" value="4">
-          <label for="R4">4</label>
-          <input type="checkbox" id="enterR5" name="R" value="5">
-          <label for="R5">5</label>
+        <div id="chooseX">
+          <h1>Choose X:</h1>
+          <input type="radio" id="enterX1" name="enterX" value="1">
+          <label for="enterX1">1</label>
+          <input type="radio" id="enterX2" name="enterX" value="2">
+          <label for="enterX2">2</label>
+          <input type="radio" id="enterX3" name="enterX" value="3">
+          <label for="enterX3">3</label>
+          <input type="radio" id="enterX4" name="enterX" value="4">
+          <label for="enterX4">4</label>
+          <input type="radio" id="enterX5" name="enterX" value="5">
+          <label for="enterX5">5</label>
+          <br/>
+          <input type="radio" id="enterX6" name="enterX" value="0">
+          <label for="enterX6">0</label>
+          <input type="radio" id="enterX7" name="enterX" value="-1">
+          <label for="enterX7">-1</label>
+          <input type="radio" id="enterX8" name="enterX" value="-2">
+          <label for="enterX8">-2</label>
+          <input type="radio" id="enterX9" name="enterX" value="-3">
+          <label for="enterX9">-3</label>
         </div>
         <input type="submit" value="Calculate" id="button">
       </form>
     </div>
   </div>
+  <div id="refresh">fsdfsf</div>
   <div class="result">
+    <table id="results">
+      <tr><th>R</th><th>X</th><th>Y</th><th><%out.print(StudentsBean.sizeList());%></th></tr>
       <%
         if(StudentsBean.sizeList()>0) {
           ArrayList<StudentsBean> list = StudentsBean.getList();
           for (StudentsBean bean:list) {
-            out.println(bean.getResult());
+            %>
+            <tr>
+              <td><% out.print(bean.getEnterR()); %></td>
+              <td><% out.print(bean.getEnterX()); %></td>
+              <td><% out.print(bean.getEnterY()); %></td>
+              <td><% out.print(bean.getResult()); %></td>
+            </tr>
+            <%
           }
         }
       %>
+    </table>
   </div>
 </div>
 </body>

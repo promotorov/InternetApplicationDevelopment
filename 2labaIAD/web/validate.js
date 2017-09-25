@@ -1,34 +1,34 @@
 $(document).ready(function(){
   $("#myForm").validate({
     rules: {
-      enterX: {
+      enterR: {
         required: true,
         number: true,
-        min: -5,
+        min: 2,
         max: 5
       },
       enterY: {
         required: true,
         number: true,
-        min: -5,
+        min: -3,
         max: 3
       },
-      'R[]': { required: true },
+      'enterX[]': { required: true },
     },
     messages: {
-      enterX: {
-        required: "<br/>Enter X",
+      enterR: {
+        required: "<br/>Enter R",
         number: "<br/>Enter a Number",
-        min: "<br/>Enter a value greater than -5",
+        min: "<br/>Enter a value greater than 2",
         max: "<br/>Enter a value less than 5"
       },
       enterY: {
      	required: "<br/>Enter Y",
         number: "<br/>Enter a Number",
-        min: "<br/>Enter a value greater than -5",
+        min: "<br/>Enter a value greater than -3",
         max: "<br/>Enter a value less than 3"
       },
-      'R[]': { required: ""},
+      'enterX[]': { required: ""},
     }
   });
 });
