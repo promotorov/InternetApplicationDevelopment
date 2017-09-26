@@ -13,6 +13,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>1 laba</title>
   <link rel="stylesheet" href="styles.css">
+    <%
+        if(StudentsBean.sizeList()>0){
+    %>
+  <link rel="stylesheet" href="newstyles.css">
+    <% } %>
   <script type="text/javascript" src="jquery.min.js"></script>
   <script type="text/javascript" src="jquery.validate.min.js"></script>
   <script type="text/javascript" src="validate.js"></script>
@@ -66,6 +71,7 @@
           <input type="radio" id="enterX9" name="enterX" value="-3">
           <label for="enterX9">-3</label>
         </div>
+        <input type="radio" id="code" name="code" value="1" checked="checked">
         <input type="submit" value="Calculate" id="button">
       </form>
     </div>
@@ -90,6 +96,9 @@
         }
       %>
     </table>
+    <div id="clear">
+      Clear
+    </div>
   </div>
 </div>
 </body>

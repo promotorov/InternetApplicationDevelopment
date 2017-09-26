@@ -19,4 +19,12 @@
         <servlet-name>servletExe2</servlet-name>
         <url-pattern>/WEB-INF/AreaCheckApp</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>servletExe3</servlet-name>
+        <servlet-class>servletApp.ClearServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>servletExe3</servlet-name>
+        <url-pattern>/WEB-INF/ClearApp</url-pattern>
+    </servlet-mapping>
 </web-app>

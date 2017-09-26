@@ -41,6 +41,7 @@ body{
 	width: 80%;
 	margin: 0 auto;
 	margin-top:20px;
+    overflow: hidden;
 }
 .form{
 	margin-top:25px;
@@ -77,8 +78,29 @@ body{
 	height: auto;
 	margin-bottom: 15px;
 }
+#code{
+    display: none;
+}
 #refresh{
-	display: block;
+	display: none;
+}
+#clear{
+    text-decoration:none;
+    text-align:center;
+    padding:11px 32px;
+    border:solid 1px #004F72;
+    border-radius: 4px;
+    font:16px Arial, Helvetica, sans-serif;
+    font-weight:bold;
+    color:#E5FFFF;
+    background-color:#3BA4C7;
+    box-shadow:0px 0px 2px #bababa, inset 0px 0px 1px #ffffff;
+    display: none;
+}
+.result{
+
+    overflow: hidden;
+	display: none;
 }
 .program img{
 	width: 100%;

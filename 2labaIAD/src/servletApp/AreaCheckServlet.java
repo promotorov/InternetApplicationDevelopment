@@ -14,7 +14,7 @@ public class AreaCheckServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             PrintWriter writer=resp.getWriter();
-            int enterX=(int)req.getAttribute("enterX");
+            double enterX=(double)req.getAttribute("enterX");
             double enterY=(double)req.getAttribute("enterY");
             double r=(double)req.getAttribute("enterR");
             boolean isInArea=checkArea(enterX, enterY, r);
@@ -34,14 +34,14 @@ public class AreaCheckServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
-    protected boolean checkArea(int x, double y, double r){
+    protected boolean checkArea(double x, double y, double r){
         if(x<=0 && y>=0 && Math.abs(x)<=Math.abs(r) && Math.abs(y)<=Math.abs(r)){
             return true;
         }
         else if(x>=0 && y<=0 && r>=Math.sqrt(y*y+x*x)){
             return true;
         }
-        else if(x>=-r/2 && x<=0 && y<=-r && y>=0 && y==-2*x-2){
+        else if(x>=-r/2 && x<=0 && y>=-r && y<=0 && y>=-2*x-2){
             return true;
         }
         else return false;

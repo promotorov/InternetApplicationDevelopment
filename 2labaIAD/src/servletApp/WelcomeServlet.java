@@ -36,38 +36,50 @@ public class WelcomeServlet extends HttpServlet {
             PrintWriter writer=response.getWriter();
             request.getParameterValues("enterX");
             Map map=request.getParameterMap();
-            String[] enterX=request.getParameterValues("enterX");
-            String[] enterY=request.getParameterValues("enterY");
-            String[] R=request.getParameterValues("enterR");
-            int x=0;
-            double y=0;
-            double r=0;
-            if(enterX.length!=1 || enterY.length!=1 || R.length!=1) {
-                correct = false;
+            String[] codE=request.getParameterValues("code");
+            int code=Integer.parseInt(codE[0]);
+            if(code==1) {
+                String[] enterX = request.getParameterValues("enterX");
+                String[] enterY = request.getParameterValues("enterY");
+                String[] R = request.getParameterValues("enterR");
+                double x = 0;
+                double y = 0;
+                double r = 0;
+                if (enterX.length != 1 || enterY.length != 1 || R.length != 1) {
+                    correct = false;
+                } else {
+                    x = round(Double.parseDouble(enterX[0]), 2);
+                    y = round(Double.parseDouble(enterY[0]), 2);
+                    r = round(Double.parseDouble(R[0]), 2);
+                    if (x >= -3 && x <= 5 && y >= -3 && y <= 3 && r >= 2 && r <= 5) correct = true;
+                    else correct = false;
+                }
+                if (map.size() != 4) correct = false;
+                if (correct == false) {
+                    request.getRequestDispatcher("/index.jsp").forward(request, response);
+                } else {
+                    //writer.println("True....");
+                    request.setAttribute("enterX", x);
+                    request.setAttribute("enterY", y);
+                    request.setAttribute("enterR", r);
+                    request.getRequestDispatcher("/WEB-INF/AreaCheckApp").forward(request, response);
+                }
             }
-            else {
-                x = Integer.parseInt(enterX[0]);
-                y = Double.parseDouble(enterY[0]);
-                r = Double.parseDouble(R[0]);
-                if(x>=-3 && x<=5 && y>=-3 && y<=3 && r>=2 && r<=5) correct=true;
-                else correct=false;
-            }
-            if(map.size()!=3) correct=false;
-            if(correct==false){
-                request.getRequestDispatcher("/index.jsp").forward(request, response);
-            }
-            else{
-                //writer.println("True....");
-                request.setAttribute("enterX", x);
-                request.setAttribute("enterY", y);
-                request.setAttribute("enterR", r);
-                request.getRequestDispatcher("/WEB-INF/AreaCheckApp").forward(request, response);
+            else if(code==3){
+                request.getRequestDispatcher("/WEB-INF/ClearApp").forward(request, response);
             }
         }
         catch(Exception exception)
         {
             request.getRequestDispatcher("/index.jsp").forward(request, response);
-            exception.printStackTrace();
         }
+    }
+    private double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        long factor = (long) Math.pow(10, places);
+        value = value * factor;
+        long tmp = Math.round(value);
+        return (double) tmp / factor;
     }
 }
